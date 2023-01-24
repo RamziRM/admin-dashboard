@@ -24,7 +24,6 @@ html {
 
 .main {
     display: grid;
-    width: 100vw;
     height: 100vh;
     grid-template-columns: clamp(180px, 25%, 250px) 1fr;
     grid-template-rows: auto 1fr;
@@ -146,10 +145,9 @@ a {
 /* Main content */
 
 .content {
-    background-color: whitesmoke;
+    background-color: var(--gray-2);
     grid-area: content;
     padding: 2rem;
-
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-rows: min-content 1fr;
@@ -166,7 +164,7 @@ a {
 
 .cards-all {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: 250px;
     gap: 2rem;
     padding-bottom: 2rem;
@@ -197,11 +195,11 @@ a {
     padding-top: 0;
 }
 
+.ann:first-child {
+    padding-bottom: 0;
+}
 .ann p {
     font-size: 0.8rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
@@ -213,4 +211,31 @@ a {
 .card-title {
   font-size: 1.2rem;
   margin-bottom: 0.25em;
+}
+
+.card-txt {
+    overflow: hidden;
+}
+
+.trending-cont {
+    grid-area: trending;
+    display: flex;
+    flex-direction: column;
+}
+
+.trending .card {
+    padding: 1.5rem;
+}
+
+.trend {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.trend .username {
+    font-weight: 500;
+    margin-bottom: 0.15rem;
 }
