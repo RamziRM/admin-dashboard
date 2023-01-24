@@ -1,3 +1,21 @@
+:root {
+    --gray-1: #fafaf9;
+    --gray-2: #e7e5e4;
+    --gray-3: #292524;
+    --gray-4: #1c1917;
+    --gray-m: #78716c;
+    --primary: #00256e;
+    --accent: #ecb425;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+html {
+    box-sizing: border-box;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--gray-4);
+}
+
 .wrapper {
     display: flex;
     justify-content: center;
@@ -6,26 +24,193 @@
 
 .main {
     display: grid;
-    max-width: 100vw;
-    max-height: 100vh;
-    grid-template-columns: 1fr 9fr;
-    grid-template-rows: 0fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: clamp(180px, 25%, 250px) 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+        'sidebar header'
+        'sidebar content';
 }
 
+/* Sidebar */
 .sidebar {
+    grid-area: sidebar;
+    padding: 2rem;
+    background-color: var(--primary);
+    color: var(--gray-1);
+}
+
+.sidebar > .main-links {
+    display: grid;
+    font-size: 1.2rem;
+    margin-top: 3.25rem;
+    gap: 1.5rem; 
+}
+
+.sidebar > .link-cont {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+a {
+    text-decoration: none;
+    font-family: inherit;
+    color: white;
+
+}
+
+.sidebar > .help-links {
+    display: grid;
+    font-size: 1.2rem;
+    margin-top: 3.25rem;
+    gap: 1.5rem; 
+}
+
+
+
+/* Header */
+.header {
+    grid-area: header;
+    padding: 0.5rem 2rem;
+}
+
+.top {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    margin-bottom: 2.5rem;
+}
+
+.search-cont {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    width: 100%;
+}
+
+.search-cont > #search {
+    display: inline-block;
+    padding: 0.75em 2em;    
+    width: min(80%, 700px);
+    height: 1.5rem;
+    margin-left: 1.25rem;
+    border-radius: 99em;
+    background-color: whitesmoke;
+    color: gray;
+}
+
+.profile-profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.btns-cont {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btn {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    padding: 0.75em 2.3em;
+    border-radius: 99em;
+}
+
+
+/* Main content */
+
+.content {
+    background-color: whitesmoke;
+    grid-area: content;
+    padding: 2rem;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: min-content 1fr;
+    gap: 2rem;
+    grid-template-areas:
+      'projects announcements'
+      'projects trending';
+    overflow: auto;
+}
+
+.projects-cont {
+    grid-area: projects;
+}
+
+.cards-all {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+
+.card {
+    border-left: 10px solid var(--accent);
     display: flex;
     flex-direction: column;
-    background-color: green;
-    padding: 30px;
-    min-width: auto;
-    min-height: 90vh;
+    background-color: var(--gray-1);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
 }
 
-.header {
-    display: flex;
+.announcements {
+    grid-area: announcements;
 }
 
-.header1 > input {
-    max-width: 800px;
-    max-height: 20px;
+.ann {
+    width: 25ch;
+    padding: 1rem 0;
+}
+
+.ann:first-child {
+    padding-top: 0;
+}
+
+.ann p {
+    font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.25em;
 }
